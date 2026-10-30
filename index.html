@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Inns plc | Strategic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d7b477;
+  --gold-light:#f0d8a8;
+  --ink:#101a1d;
+  --panel:rgba(13,24,27,.82);
+  --panel-strong:rgba(10,19,22,.95);
+  --text:#f5f2ec;
+  --muted:#c4c7c2;
+  --line:rgba(255,255,255,.17);
+  --shadow:0 20px 65px rgba(0,0,0,.3);
+}
+body.light{
+  --ink:#f2eee7;
+  --panel:rgba(255,252,246,.88);
+  --panel-strong:rgba(255,252,246,.97);
+  --text:#1c292b;
+  --muted:#536164;
+  --line:rgba(20,35,38,.17);
+  --shadow:0 20px 65px rgba(45,35,20,.13);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  font-family:'Manrope','Noto Sans Armenian',sans-serif;
+  background:#101a1d;color:var(--text);
+  transition:background .35s,color .35s;
+}
+button{font:inherit;cursor:pointer}
+.deck{height:100vh;width:100vw;position:relative;overflow:hidden}
+.slide{
+  position:absolute;inset:0;display:flex;align-items:center;
+  padding:90px 7.5% 95px;opacity:0;visibility:hidden;
+  transform:translateX(35px);transition:opacity .55s,transform .65s,visibility .55s;
+  overflow-y:auto;
+}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0);z-index:2}
+.slide::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background-image:var(--bg);background-size:cover;background-position:center;
+  transform:scale(1.04);animation:slowZoom 22s ease-in-out infinite alternate;
+}
+.slide::after{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(5,13,16,.91) 0%,rgba(5,13,16,.73) 53%,rgba(5,13,16,.32) 100%),
+             linear-gradient(0deg,rgba(5,13,16,.45),transparent 55%);
+}
+body.light .slide::after{
+  background:linear-gradient(90deg,rgba(247,243,234,.94) 0%,rgba(247,243,234,.82) 55%,rgba(247,243,234,.36) 100%),
+             linear-gradient(0deg,rgba(247,243,234,.35),transparent 55%);
+}
+@keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+
+.topbar{
+  position:fixed;z-index:20;top:0;left:0;right:0;height:67px;
+  padding:0 4.5%;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--line);background:rgba(8,16,18,.25);
+  backdrop-filter:blur(12px)
+}
+body.light .topbar{background:rgba(255,252,246,.55)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em;font-size:12px}
+.brand-mark{
+  width:31px;height:31px;border:1px solid var(--gold);border-radius:50%;
+  display:grid;place-items:center;color:var(--gold);font-size:14px
+}
+.top-actions{display:flex;align-items:center;gap:9px}
+.top-btn{
+  border:1px solid var(--line);background:var(--panel);color:var(--text);
+  padding:9px 13px;border-radius:30px;font-size:12px;font-weight:700;
+  transition:.25s
+}
+.top-btn:hover{border-color:var(--gold);color:var(--gold)}
+.top-btn.active{background:var(--gold);color:#182022;border-color:var(--gold)}
+.progress{
+  position:fixed;z-index:21;top:66px;left:0;height:2px;background:var(--gold);
+  width:0;transition:width .4s
+}
+.page-number{
+  position:fixed;z-index:10;left:4.5%;bottom:29px;font-size:11px;
+  color:var(--muted);letter-spacing:.16em
+}
+.navigation{
+  position:fixed;z-index:20;right:4.5%;bottom:20px;display:flex;gap:8px;align-items:center
+}
+.nav-btn{
+  width:43px;height:43px;border:1px solid var(--line);border-radius:50%;
+  color:var(--text);background:var(--panel);font-size:18px;transition:.25s
+}
+.nav-btn:hover{background:var(--gold);color:#172124;border-color:var(--gold)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.nav-label{font-size:11px;color:var(--muted);margin:0 7px;min-width:55px;text-align:center}
+
+.content{width:min(1120px,100%);margin:auto;padding:10px 0}
+.eyebrow{
+  color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.22em;
+  text-transform:uppercase;margin-bottom:16px
+}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(38px,6vw,76px);line-height:1.06;letter-spacing:-.045em;max-width:850px;margin-bottom:24px}
+h2{font-size:clamp(29px,4vw,49px);line-height:1.13;letter-spacing:-.035em;margin-bottom:17px}
+h3{font-size:18px;margin-bottom:10px}
+.lead{font-size:clamp(15px,1.5vw,19px);line-height:1.85;color:var(--muted);max-width:790px}
+.gold{color:var(--gold)}
+.rule{height:1px;width:75px;background:var(--gold);margin:22px 0}
+.intro-tag{
+  display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);
+  padding:10px 15px;border-radius:30px;color:var(--muted);font-size:12px;margin-top:12px
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:26px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.info-card{
+  border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(13px);
+  border-radius:17px;padding:22px;box-shadow:var(--shadow);min-width:0
+}
+.info-card .num{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.15em;margin-bottom:12px}
+.info-card h3{font-size:16px}
+.info-card p{font-size:13px;line-height:1.8;color:var(--muted);margin-bottom:0}
+.card-icon{font-size:23px;margin-bottom:12px}
+.pill{
+  display:inline-block;border:1px solid var(--line);border-radius:30px;
+  padding:6px 10px;color:var(--gold);font-size:10px;margin:5px 5px 0 0
+}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center}
+.quote-panel{
+  padding:27px;border-left:2px solid var(--gold);background:var(--panel);
+  border-radius:0 16px 16px 0;backdrop-filter:blur(12px)
+}
+.quote-panel p{font-size:17px;line-height:1.8;margin:0}
+.detail-toggle{
+  margin-top:17px;display:inline-flex;align-items:center;gap:9px;
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
+  padding:10px 15px;border-radius:30px;font-size:12px;font-weight:800;
+  transition:.25s
+}
+.detail-toggle:hover{background:var(--gold);color:#142024}
+.detail-panel{
+  display:none;margin-top:13px;padding:20px 22px;border-radius:14px;
+  background:var(--panel-strong);border:1px solid var(--line);
+  animation:reveal .3s ease
+}
+.detail-panel.open{display:block}
+.detail-panel p,.detail-panel li{font-size:13px;line-height:1.85;color:var(--muted)}
+.detail-panel ul{padding-left:19px;margin-bottom:0}
+@keyframes reveal{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+
+.notes-trigger{
+  position:fixed;z-index:25;right:4.5%;top:85px;border:1px solid var(--gold);
+  background:var(--panel);color:var(--gold);border-radius:30px;
+  padding:10px 14px;font-size:11px;font-weight:800;backdrop-filter:blur(10px)
+}
+.notes-trigger:hover{background:var(--gold);color:#172124}
+.notes-box{
+  display:none;position:fixed;z-index:24;right:4.5%;top:132px;
+  width:min(430px,90vw);max-height:68vh;overflow:auto;
+  background:var(--panel-strong);border:1px solid var(--gold);
+  border-radius:18px;padding:23px;box-shadow:var(--shadow);
+  backdrop-filter:blur(18px)
+}
+.notes-box.open{display:block;animation:reveal .25s ease}
+.notes-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.notes-head h3{margin:0;color:var(--gold);font-size:14px}
+.close-notes{background:none;border:0;color:var(--text);font-size:22px}
+.notes-box p{font-size:13px;line-height:1.9;color:var(--muted);margin-bottom:12px}
+.notes-hint{font-size:10px;color:var(--gold);margin-bottom:14px}
+
+.table-wrap{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:15px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{text-align:left;padding:15px 17px;border-bottom:1px solid var(--line);font-size:12px;line-height:1.7;vertical-align:top}
+th{color:var(--gold);font-size:11px;letter-spacing:.07em;background:rgba(215,180,119,.08)}
+td{color:var(--muted)}
+td:first-child{color:var(--text);font-weight:700}
+tr:last-child td{border-bottom:0}
+.recommendation{
+  margin-top:22px;padding:23px 25px;border:1px solid var(--gold);
+  border-radius:16px;background:linear-gradient(120deg,rgba(215,180,119,.15),var(--panel))
+}
+.recommendation strong{color:var(--gold)}
+.recommendation p{font-size:13px;line-height:1.8;color:var(--muted);margin:8px 0 0}
+
+.cover-kicker{font-size:12px;letter-spacing:.24em;color:var(--gold);font-weight:800;margin-bottom:20px}
+.cover-sub{max-width:650px}
+.cover-line{height:2px;width:100px;background:var(--gold);margin:28px 0}
+.cover-meta{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:11px}
+.cover-meta span{display:flex;align-items:center;gap:8px}
+
+@media(max-width:800px){
+  .slide{padding:95px 6% 95px}
+  .grid.three{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .topbar{padding:0 5%}
+  .brand{font-size:10px}
+  .top-btn{padding:8px 10px;font-size:10px}
+  .notes-trigger{top:77px;right:5%}
+  .notes-box{top:122px;right:5%}
+  .navigation{right:5%}
+  .page-number{left:5%}
+}
+@media(max-height:700px){
+  .slide{align-items:flex-start;padding-top:100px}
+  .content{padding-bottom:20px}
+}
+</style>
+</head>
+
+<body>
+<div class="deck" id="deck">
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">CI</div>
+    <span>COACHING INNS <span class="gold">/</span> STRATEGIC REVIEW</span>
+  </div>
+  <div class="top-actions">
+    <button class="top-btn" id="themeBtn" onclick="toggleTheme()">☼ Լույս</button>
+    <button class="top-btn" onclick="toggleOverview()">☷ Էջեր</button>
+    <button class="top-btn" onclick="toggleFullscreen()">⛶</button>
+  </div>
+</header>
+<div class="progress" id="progress"></div>
+
+<!-- 01 COVER -->
+<section class="slide active" style="--bg:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="cover-kicker">STRATEGIC MANAGEMENT · CASE STUDY</div>
+    <h1>Coaching Inns plc</h1>
+    <h2 class="gold" style="font-size:clamp(22px,3vw,34px);font-weight:500">Ռազմավարական մարտահրավերներ և կառավարման լուծումներ</h2>
+    <div class="cover-line"></div>
+    <p class="lead cover-sub">
+      Աշխատուժի պակասուրդի, ֆինանսական ռիսկերի և միջազգային ընդլայնման
+      ռազմավարության համապարփակ վերլուծություն։
+    </p>
+    <div class="cover-meta">
+      <span><i class="dot"></i> Իրավիճակային խնդիր 4</span>
+      <span><i class="dot"></i> Ռազմավարական վերլուծություն</span>
+      <span><i class="dot"></i> Տնտեսագիտական մոտեցում</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 COMPANY -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">01 / Ընկերության նկարագիրը</div>
+    <h2>Որտե՞ղ է գտնվում <span class="gold">Coaching Inns plc</span>-ը</h2>
+    <p class="lead">
+      Coaching Inns plc-ն Տրինիդադում գործող հյուրանոցային ընկերություն է,
+      որն ունի 23 բարձրակարգ՝ 4–5 աստղանի հյուրանոց։ Ընկերության զարգացման
+      ռազմավարությունը հիմնված է հյուրանոցային բիզնեսի ընդլայնման և նոր շուկաներ
+      մուտք գործելու վրա։
+    </p>
+    <div class="grid three">
+      <div class="info-card">
+        <div class="card-icon">🏨</div>
+        <div class="num">ԳՈՐԾՈՒՆԵՈՒԹՅՈՒՆ</div>
+        <h3>23 հյուրանոց</h3>
+        <p>Ընկերությունն ունի 23 բարձրակարգ հյուրանոց Տրինիդադում՝ 4–5 աստղանի դասակարգմամբ։</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">💳</div>
+        <div class="num">ՖԻՆԱՆՍԱԿԱՆ ԴԻՐՔ</div>
+        <h3>Մեծ վարկային պարտավորություններ</h3>
+        <p>Ընդլայնման և անշարժ գույքի ձեռքբերման նպատակով ընկերությունը ներգրավել է զգալի փոխառու միջոցներ։</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🌎</div>
+        <div class="num">ԶԱՐԳԱՑՄԱՆ ՆՊԱՏԱԿ</div>
+        <h3>Մուտք ԱՄՆ շուկա</h3>
+        <p>Ընկերությունը դիտարկում է ԱՄՆ-ում իր առաջին հյուրանոցը բացելու հնարավորությունը։</p>
+      </div>
+    </div>
+    <button class="detail-toggle" onclick="toggleDetail(this)">＋ Ինչու է իրավիճակը բարդ</button>
+    <div class="detail-panel">
+      <p>
+        Ընկերությունը միաժամանակ բախվում է երկու կարևոր սպառնալիքի։ Առաջինը՝
+        ցածր որակավորում պահանջող աշխատակիցների՝ հատկապես խոհանոցի և մաքրության
+        անձնակազմի պակասն է։ Երկրորդը՝ ինֆլյացիայի պայմաններում Կենտրոնական բանկի
+        կողմից տոկոսադրույքների բարձրացման վտանգը։ Այս խնդիրները փոխկապակցված են․
+        աշխատուժի պակասը կարող է սահմանափակել եկամուտները, իսկ բարձր տոկոսադրույքները՝
+        մեծացնել ֆինանսական բեռը։
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CHALLENGES -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">02 / Իրավիճակի հիմնական խնդիրները</div>
+    <h2>Երկու սպառնալիք, <span class="gold">մեկ ռազմավարական խնդիր</span></h2>
+    <p class="lead">
+      Ընկերության առաջ ծառացած խնդիրները միայն ընթացիկ դժվարություններ չեն։
+      Դրանք կարող են ազդել բիզնեսի մրցունակության, ֆինանսական կայունության և
+      ապագա ընդլայնման հնարավորությունների վրա։
+    </p>
+    <div class="grid">
+      <div class="info-card">
+        <div class="num">ԽՆԴԻՐ 01</div>
+        <h3>Աշխատուժի պակասուրդ</h3>
+        <p>
+          Խոհանոցի, հավաքարարների և սպասարկման ոլորտի աշխատակիցների ներգրավումը
+          դժվարացել է։ Արդյունքում ընկերությունը կարող է չկարողանալ ապահովել
+          հյուրանոցների բնականոն աշխատանքը և սպասարկման պահանջվող մակարդակը։
+        </p>
+        <span class="pill">Մարդկային ռեսուրսներ</span>
+        <span class="pill">Ծառայության որակ</span>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Խնդրի խորքային բացատրություն</button>
+        <div class="detail-panel">
+          <p>
+            Խնդիրը հատկապես կարևոր է բարձրակարգ հյուրանոցների համար, քանի որ
+            ծառայության որակը մեծապես կախված է աշխատակիցների բավարար քանակից և
+            նրանց աշխատանքի արդյունավետությունից։ Անձնակազմի պակասը կարող է
+            ծանրաբեռնել գործող աշխատակիցներին, դանդաղեցնել սպասարկումը և
+            բացասաբար անդրադառնալ հյուրերի փորձառության վրա։
+          </p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="num">ԽՆԴԻՐ 02</div>
+        <h3>Տոկոսադրույքների բարձրացման վտանգ</h3>
+        <p>
+          Ինֆլյացիայի աճի պայմաններում Կենտրոնական բանկը կարող է բարձրացնել
+          տոկոսադրույքները։ Դա հատկապես վտանգավոր է մեծ վարկային պարտավորություններ
+          ունեցող ընկերության համար։
+        </p>
+        <span class="pill">Պարտքի սպասարկում</span>
+        <span class="pill">Իրացվելիություն</span>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Խնդրի խորքային բացատրություն</button>
+        <div class="detail-panel">
+          <p>
+            Տոկոսադրույքների աճը թանկացնում է փոխառու միջոցները և կարող է
+            մեծացնել ընկերության տոկոսային ծախսերը։ Միաժամանակ տնտեսական
+            ակտիվության դանդաղումը կարող է նվազեցնել զբոսաշրջության և
+            ռեստորանային ծառայությունների նկատմամբ պահանջարկը։
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 QUESTION 1 -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">03 / Հարց 1 · Աշխատակիցների հավաքագրում</div>
+    <h2>Ինչո՞ւ է դժվարացել <span class="gold">նոր աշխատակիցներ վարձելը</span></h2>
+    <p class="lead">
+      Հավաքագրման դժվարությունները պայմանավորված են ոչ թե մեկ առանձին գործոնով,
+      այլ արտաքին տնտեսական միջավայրի և ընկերության ներքին կառավարման
+      առանձնահատկությունների համադրությամբ։
+    </p>
+    <div class="grid">
+      <div class="info-card">
+        <div class="num">01 · ԱՐՏԱՔԻՆ ԳՈՐԾՈՆ</div>
+        <h3>Ցածր գործազրկություն</h3>
+        <p>
+          Տնտեսական վերելքի պայմաններում երկրում գործազրկությունը ցածր է։
+          Աշխատուժի առաջարկը սահմանափակվում է, իսկ աշխատողները ստանում են
+          ավելի մեծ ընտրության հնարավորություն։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Երբ աշխատաշուկայում ազատ աշխատողների թիվը քիչ է, գործատուները
+          ստիպված են մրցակցել նույն թեկնածուների համար։ Աշխատակիցները կարող են
+          ընտրել ավելի բարձր վարձատրություն կամ ավելի հարմար աշխատանքային պայմաններ
+          առաջարկող կազմակերպությանը։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">02 · ՆԵՐՔԻՆ ԳՈՐԾՈՆ</div>
+        <h3>Աշխատանքային պայմաններ և վարձատրություն</h3>
+        <p>
+          Խոհանոցային և սպասարկող հաստիքները հաճախ կապված են ֆիզիկական ծանր
+          աշխատանքի, երկար ու ոչ ճկուն աշխատանքային ժամերի և ոչ մրցունակ
+          աշխատավարձերի հետ։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Նման պայմանները նվազեցնում են աշխատանքի գրավչությունը։ Նույնիսկ եթե
+          ընկերությունն ունի թափուր հաստիքներ, թեկնածուները կարող են նախընտրել
+          այլ ոլորտներ կամ այն հյուրանոցները, որոնք առաջարկում են ավելի հարմար
+          գրաֆիկ և ավելի լավ փոխհատուցում։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">03 · ՆԵՐՔԻՆ ԳՈՐԾՈՆ</div>
+        <h3>Ուսուցման համակարգի բացակայություն</h3>
+        <p>
+          Ընկերությունը չունի աշխատակիցների համընդհանուր վերապատրաստման համակարգ
+          և հիմնականում փորձում է ներգրավել արդեն պատրաստի մասնագետների։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Պատրաստի կադրերի որոնումը սահմանափակում է թեկնածուների շրջանակը։
+          Ընկերությունը բաց է թողնում անփորձ, բայց սովորելու պատրաստ մարդկանց
+          աշխատանքի ընդունելու և սեփական պահանջներին համապատասխան մասնագետներ
+          ձևավորելու հնարավորությունը։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">04 · ԱՐՏԱՔԻՆ ԳՈՐԾՈՆ</div>
+        <h3>Մրցակցություն այլ հյուրանոցների հետ</h3>
+        <p>
+          Աշխատուժի պակասի պայմաններում մյուս հյուրանոցները նույնպես պայքարում
+          են որակյալ աշխատակիցների համար՝ առաջարկելով ավելի բարձր աշխատավարձեր
+          կամ հավելավճարներ։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Այս մրցակցությունը մեծացնում է աշխատակիցների ներգրավման և պահպանման
+          ծախսերը։ Եթե Coaching Inns plc-ն չվերանայի իր առաջարկած պայմանները,
+          կարող է կորցնել նույնիսկ այն թեկնածուներին, որոնք հետաքրքրված են
+          հյուրանոցային ոլորտում աշխատելով։
+        </p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 QUESTION 2 -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">04 / Հարց 2 · Ընդլայնման ռազմավարություն</div>
+    <h2>Ինչպե՞ս է աշխատուժի պակասը սահմանափակում <span class="gold">աճը</span></h2>
+    <p class="lead">
+      Աշխատակիցների պակասուրդը կարող է խոչընդոտել ոչ միայն գործող հյուրանոցների
+      արդյունավետ աշխատանքին, այլև ԱՄՆ-ում առաջին հյուրանոցը բացելու ծրագրին։
+    </p>
+    <div class="grid">
+      <div class="info-card">
+        <div class="num">01 / ՍՊԱՍԱՐԿՄԱՆ ՈՐԱԿ</div>
+        <h3>Բրենդի հեղինակության վտանգ</h3>
+        <p>
+          Անձնակազմի պակասը մեծացնում է գործող աշխատակիցների ծանրաբեռնվածությունը,
+          դանդաղեցնում սպասարկումը և կարող է նվազեցնել ծառայությունների որակը։
+          Սա վտանգավոր է 4–5 աստղանի հյուրանոցների համար։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Հետևանքները</button>
+        <div class="detail-panel"><p>
+          Բարձրակարգ հյուրանոցից հաճախորդը սպասում է կայուն և բարձր մակարդակի
+          սպասարկում։ Եթե ընկերությունը չի կարողանում պահպանել այդ չափանիշը,
+          հյուրերի դժգոհությունը կարող է վնասել տարիների ընթացքում ձևավորված
+          հեղինակությանը և նվազեցնել կրկնակի այցելությունների հավանականությունը։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">02 / ԳՈՐԾԱՌՆԱԿԱՆ ԱՐԴՅՈՒՆԱՎԵՏՈՒԹՅՈՒՆ</div>
+        <h3>Հզորությունների թերբեռնվածություն</h3>
+        <p>
+          Բավարար անձնակազմի բացակայության դեպքում ընկերությունը չի կարող
+          լիարժեք օգտագործել հյուրանոցային սենյակներն ու ռեստորանները։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Հետևանքները</button>
+        <div class="detail-panel"><p>
+          Հյուրանոցը կարող է ունենալ անհրաժեշտ շենքային և նյութական ռեսուրսներ,
+          սակայն առանց համապատասխան աշխատակիցների դրանք լիարժեք չեն աշխատի։
+          Այսպիսով՝ առկա հզորությունները չեն վերածվի հնարավոր ամբողջական եկամտի։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">03 / ՄԻՋԱԶԳԱՅԻՆ ԱՃ</div>
+        <h3>ԱՄՆ ընդլայնման հետաձգում</h3>
+        <p>
+          Եթե ընկերությունը դժվարանում է համալրել գործող հյուրանոցների
+          անձնակազմը, նոր երկրում հավաքագրման կազմակերպումը կարող է ավելի
+          բարդ և ռիսկային լինել։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Հետևանքները</button>
+        <div class="detail-panel"><p>
+          Նոր շուկա մուտք գործելը պահանջում է ոչ միայն ֆինանսական միջոցներ,
+          այլև նոր թիմի ձևավորում, աշխատանքի կազմակերպում և ծառայության
+          չափանիշների պահպանում։ Գործող աշխատուժային խնդիրը չլուծած՝ նոր
+          հյուրանոցի բացումը կարող է մեծացնել կառավարման բարդությունը։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">04 / ՖԻՆԱՆՍԱԿԱՆ ԱԶԴԵՑՈՒԹՅՈՒՆ</div>
+        <h3>Աշխատուժի ծախսերի աճ</h3>
+        <p>
+          Աշխատակիցներին ներգրավելու և պահպանելու համար ընկերությունը կարող է
+          ստիպված լինել բարձրացնել աշխատավարձերը և տրամադրել հավելյալ
+          խրախուսումներ։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Հետևանքները</button>
+        <div class="detail-panel"><p>
+          Աշխատուժի ծախսերի աճը կարող է նվազեցնել շահույթի մարժան։
+          Ընկերությունը պետք է հավասարակշռի երկու նպատակ՝ առաջարկի մրցունակ
+          պայմաններ աշխատակիցներին, բայց միաժամանակ պահպանի գործառնական
+          ծախսերի վերահսկելի մակարդակը։
+        </p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 QUESTION 3 -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">05 / Հարց 3 · Աշխատուժի խնդրի լուծումներ</div>
+    <h2>Երկու ուղղություն՝ <span class="gold">կադրեր ներգրավելու և պահելու համար</span></h2>
+    <p class="lead">
+      Տնօրենների խորհուրդը կարող է միաժամանակ աշխատել աշխատուժի առաջարկի
+      ընդլայնման և ընկերության՝ որպես գործատուի գրավչության բարձրացման ուղղություններով։
+    </p>
+    <div class="split">
+      <div class="info-card">
+        <div class="num">ԼՈՒԾՈՒՄ 01</div>
+        <h3 style="font-size:23px">Սեփական ուսուցման և վերապատրաստման ծրագրեր</h3>
+        <p>
+          Ընկերությունը պետք է հրաժարվի միայն փորձառու աշխատակիցներ վարձելու
+          մոտեցումից և հնարավորություն տա անփորձ, երիտասարդ թեկնածուներին
+          սովորել ու զարգանալ հենց աշխատանքի վայրում։
+        </p>
+        <div style="margin-top:17px">
+          <span class="pill">Նոր թեկնածուներ</span>
+          <span class="pill">Ներքին ուսուցում</span>
+          <span class="pill">Կորպորատիվ մշակույթ</span>
+        </div>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Ինչպե՞ս իրականացնել</button>
+        <div class="detail-panel">
+          <ul>
+            <li>Սահմանել յուրաքանչյուր հաստիքի համար անհրաժեշտ հմտությունները։</li>
+            <li>Ընդունել սովորելու պատրաստ թեկնածուների՝ նույնիսկ եթե նրանք չունեն մեծ փորձ։</li>
+            <li>Կազմակերպել գործնական ուսուցում փորձառու աշխատակիցների աջակցությամբ։</li>
+            <li>Պարբերաբար գնահատել սովորած հմտություններն ու աշխատանքի որակը։</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="num">ԼՈՒԾՈՒՄ 02</div>
+        <h3 style="font-size:23px">Աշխատանքային պայմանների և փոխհատուցման բարելավում</h3>
+        <p>
+          Ընկերությունը պետք է բարձրացնի իր առաջարկի գրավչությունը՝ վերանայելով
+          աշխատավարձերը, հավելավճարները, աշխատանքային գրաֆիկը և աշխատակիցների
+          սոցիալական երաշխիքները։
+        </p>
+        <div style="margin-top:17px">
+          <span class="pill">Աշխատավարձ</span>
+          <span class="pill">Բոնուսներ</span>
+          <span class="pill">Կարիերայի աճ</span>
+        </div>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Ինչպե՞ս իրականացնել</button>
+        <div class="detail-panel">
+          <ul>
+            <li>Բարձրացնել վարձատրության մրցունակությունը։</li>
+            <li>Ներդնել աշխատանքի արդյունքներին համապատասխան բոնուսային համակարգ։</li>
+            <li>Հնարավորության դեպքում առաջարկել ճկուն աշխատանքային ժամեր։</li>
+            <li>Դիտարկել բժշկական ապահովագրության և կարիերայի զարգացման հնարավորությունները։</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="recommendation">
+      <strong>Կառավարչական միտք</strong>
+      <p>
+        Առաջին լուծումը մեծացնում է հնարավոր աշխատակիցների շրջանակը, իսկ երկրորդը
+        օգնում է ներգրավել և պահպանել նրանց։ Դրանք փոխարինող, այլ ոչ թե
+        մրցակցող լուծումներ են։
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 QUESTION 4 FINANCIAL -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">06 / Հարց 4 · Տոկոսադրույքների բարձրացում</div>
+    <h2>Ֆինանսական ազդեցություն․ <span class="gold">պարտքի սպասարկման թանկացում</span></h2>
+    <p class="lead">
+      Քանի որ Coaching Inns plc-ն անշարժ գույք ձեռք բերելու և ընդլայնվելու
+      նպատակով ներգրավել է մեծ փոխառություններ, տոկոսադրույքների բարձրացումը
+      կարող է անմիջականորեն ազդել ընկերության ֆինանսական վիճակի վրա։
+    </p>
+    <div class="split">
+      <div>
+        <div class="info-card" style="margin-bottom:14px">
+          <div class="num">ԱԶԴԵՑՈՒԹՅՈՒՆ 01</div>
+          <h3>Տոկոսային ծախսերի աճ</h3>
+          <p>
+            Տոկոսադրույքների բարձրացման դեպքում ընկերության պարտքի սպասարկման
+            արժեքը կարող է աճել՝ մեծացնելով տոկոսային վճարումների բեռը։
+          </p>
+        </div>
+        <div class="info-card">
+          <div class="num">ԱԶԴԵՑՈՒԹՅՈՒՆ 02</div>
+          <h3>Շահույթի և դրամական հոսքերի ճնշում</h3>
+          <p>
+            Ավելի մեծ տոկոսային ծախսերը նվազեցնում են զուտ շահույթը և
+            սահմանափակում ընկերության տրամադրության տակ մնացող դրամական միջոցները։
+          </p>
+        </div>
+      </div>
+      <div class="quote-panel">
+        <div class="eyebrow">ՊԱՏՃԱՌԱՀԵՏԵՎԱՆՔԱՅԻՆ ՇՂԹԱ</div>
+        <h3 style="font-size:23px">Տոկոսադրույքի աճ</h3>
+        <p class="gold" style="font-size:26px;margin:7px 0">↓</p>
+        <h3>Տոկոսային վճարումների ավելացում</h3>
+        <p class="gold" style="font-size:26px;margin:7px 0">↓</p>
+        <h3>Զուտ շահույթի նվազում</h3>
+        <p class="gold" style="font-size:26px;margin:7px 0">↓</p>
+        <h3>Դրամական հոսքերի լարվածություն</h3>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Իրացվելիության ռիսկը</button>
+        <div class="detail-panel">
+          <p>
+            Իրացվելիությունը ցույց է տալիս ընկերության՝ իր ընթացիկ ֆինանսական
+            պարտավորությունները ժամանակին կատարելու կարողությունը։ Եթե
+            տոկոսավճարները մեծանում են, իսկ գործունեությունից ստացվող դրամական
+            հոսքերը բավարար չեն, կարող է առաջանալ իրացվելիության ճգնաժամի վտանգ։
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 QUESTION 4 MARKET -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">07 / Հարց 4 · Շուկայական ազդեցություն</div>
+    <h2>Տոկոսադրույքների աճը կարող է ազդել նաև <span class="gold">պահանջարկի վրա</span></h2>
+    <p class="lead">
+      Բարձր տոկոսադրույքների ազդեցությունը սահմանափակված չէ միայն ընկերության
+      վարկային ծախսերով։ Այն կարող է անդրադառնալ նաև սպառողների վարքագծին,
+      զբոսաշրջության պահանջարկին և ներդրումային ծրագրերին։
+    </p>
+    <div class="grid three">
+      <div class="info-card">
+        <div class="card-icon">🧳</div>
+        <div class="num">01 / ՍՊԱՌՈՂՆԵՐ</div>
+        <h3>Տնօրինելի եկամտի ճնշում</h3>
+        <p>
+          Բարձր տոկոսադրույքները կարող են զսպել տնտեսական ակտիվությունը և
+          մեծացնել տնային տնտեսությունների ֆինանսական բեռը։ Արդյունքում
+          նվազում են շքեղության և հանգստի վրա կատարվող ծախսերը։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Հյուրանոցային ծառայությունները հաճախ դիտարկվում են որպես ոչ առաջնային
+          ծախս։ Երբ սպառողները սահմանափակում են իրենց ծախսերը, կարող են կրճատել
+          ճանապարհորդությունների տևողությունը, ընտրել ավելի մատչելի կացարաններ
+          կամ հետաձգել հանգիստը։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏖️</div>
+        <div class="num">02 / ՀՅՈՒՐԱՆՈՑԱՅԻՆ ՊԱՀԱՆՋԱՐԿ</div>
+        <h3>Զբաղվածության հնարավոր նվազում</h3>
+        <p>
+          Զբոսաշրջության և ռեստորանային ծառայությունների վրա ծախսերի նվազումը
+          կարող է հանգեցնել հյուրանոցների զբաղվածության մակարդակի անկման։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Զբաղվածության մակարդակը կարևոր ցուցանիշ է հյուրանոցային բիզնեսի համար։
+          Եթե սենյակների պահանջարկը նվազում է, ընկերության եկամուտները կարող են
+          նվազել, մինչդեռ պահպանվում են բազմաթիվ հաստատուն ծախսեր՝ շենքերի,
+          սպասարկման և աշխատակազմի պահպանման համար։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🏗️</div>
+        <div class="num">03 / ՆԵՐԴՐՈՒՄՆԵՐ</div>
+        <h3>ԱՄՆ ընդլայնման թանկացում</h3>
+        <p>
+          Նոր հյուրանոց բացելու կամ նոր անշարժ գույք ձեռք բերելու համար անհրաժեշտ
+          կապիտալ ծախսերը կարող են ավելի թանկ դառնալ։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Մանրամասնել</button>
+        <div class="detail-panel"><p>
+          Փոխառու միջոցների արժեքի բարձրացումը կարող է ստիպել ընկերությանը
+          վերանայել ներդրումային ծրագրի շահութաբերությունը։ Եթե նոր նախագծի
+          ֆինանսավորման ծախսը մեծանում է, դրա իրականացումը կարող է հետաձգվել
+          կամ ժամանակավորապես սառեցվել։
+        </p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 SHORT/LONG TERM -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">08 / Հարց 4 · Ժամանակային ազդեցություն</div>
+    <h2>Կարճաժամկետ ճնշում և <span class="gold">երկարաժամկետ հեռանկար</span></h2>
+    <p class="lead">
+      Տոկոսադրույքների բարձրացման հետևանքները կարող են տարբեր լինել՝ կախված
+      ժամանակային հորիզոնից, ընկերության պարտքի կառավարման արդյունավետությունից
+      և տնտեսական միջավայրի հետագա զարգացումից։
+    </p>
+    <div class="grid">
+      <div class="info-card">
+        <div class="num">ԿԱՐՃԱԺԱՄԿԵՏ ԱԶԴԵՑՈՒԹՅՈՒՆ</div>
+        <h3 style="font-size:24px">Անմիջական ֆինանսական ճնշում</h3>
+        <ul style="padding-left:18px;color:var(--muted);font-size:13px;line-height:2">
+          <li>Տոկոսավճարների աճի պատճառով զուտ շահույթի նվազում։</li>
+          <li>Դրամական հոսքերի լարվածություն և պարտավորությունների սպասարկման բարդացում։</li>
+          <li>ԱՄՆ-ում ընդլայնման ծրագրերի ժամանակավոր սառեցում։</li>
+        </ul>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Ինչ է սա նշանակում ղեկավարության համար</button>
+        <div class="detail-panel"><p>
+          Կարճաժամկետ փուլում առաջնային է դառնում կանխիկ միջոցների վերահսկումը։
+          Ընկերությունը պետք է ուշադիր գնահատի իր պարտավորությունները, դրամական
+          հոսքերը և նոր ներդրումների իրականացման հնարավորությունը՝ խուսափելով
+          ֆինանսական չափազանց մեծ ռիսկից։
+        </p></div>
+      </div>
+      <div class="info-card">
+        <div class="num">ԵՐԿԱՐԱԺԱՄԿԵՏ ՀԵՌԱՆԿԱՐ</div>
+        <h3 style="font-size:24px">Կայունության վերականգնում</h3>
+        <ul style="padding-left:18px;color:var(--muted);font-size:13px;line-height:2">
+          <li>Ֆինանսական կայունության վերականգնում՝ պարտքերի աստիճանական մարման դեպքում։</li>
+          <li>Տնտեսական ակտիվության վերականգնումից հետո շուկայական դիրքերի ամրապնդում։</li>
+          <li>Ավելի կայուն հիմքի վրա միջազգային ընդլայնման հնարավորության վերագնահատում։</li>
+        </ul>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Ինչ պայմաններում է դա հնարավոր</button>
+        <div class="detail-panel"><p>
+          Երկարաժամկետ դրական հեռանկարը կախված է պարտքի կառավարման,
+          ծախսերի վերահսկման և հյուրանոցների արդյունավետ աշխատանքի
+          ապահովումից։ Եթե ընկերությունը կարողանա կարգավորել ֆինանսական
+          վիճակը և հաղթահարել աշխատուժի խնդիրը, հետագայում կարող է վերադառնալ
+          ընդլայնման ծրագրին՝ ավելի ամուր հիմքով։
+        </p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ALTERNATIVES -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">09 / Հարց 5 · Ռազմավարական այլընտրանքներ</div>
+    <h2>Ինչպե՞ս արձագանքել <span class="gold">բարձր տոկոսադրույքներին</span></h2>
+    <p class="lead">
+      Ընկերությունը կարող է ընտրել մի քանի ռազմավարական մոտեցում։ Յուրաքանչյուրն
+      ունի առավելություններ և ռիսկեր, ուստի որոշումը պետք է համապատասխանի
+      ընկերության ֆինանսական վիճակին և երկարաժամկետ նպատակներին։
+    </p>
+    <div class="grid three">
+      <div class="info-card">
+        <div class="num">ԱՅԼԸՆՏՐԱՆՔ 01</div>
+        <h3>Կոնսոլիդացիոն / պահպանողական ռազմավարություն</h3>
+        <p>
+          Ժամանակավորապես կանգնեցնել ընդլայնումը և ազատ ռեսուրսներն ուղղել
+          պարտքերի մարմանն ու ֆինանսական կայունության ամրապնդմանը։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Առավելություններ և ռիսկեր</button>
+        <div class="detail-panel">
+          <p><strong class="gold">Առավելություններ.</strong> նվազեցնում է ֆինանսական ռիսկը և տոկոսային բեռը, բարելավում է իրացվելիությունը և նպաստում կայունությանը։</p>
+          <p><strong class="gold">Ռիսկեր.</strong> ընկերությունը կարող է բաց թողնել ԱՄՆ շուկա մուտք գործելու հնարավորությունը, իսկ մրցակիցները կարող են առաջ անցնել։</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="num">ԱՅԼԸՆՏՐԱՆՔ 02</div>
+        <h3>Ծախսերի կրճատում և օպտիմալացում</h3>
+        <p>
+          Վերանայել գործառնական ծախսերը, նվազեցնել անարդյունավետ ծախսումները
+          և ավելի արդյունավետ օգտագործել առկա ներքին ռեսուրսները։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Առավելություններ և ռիսկեր</button>
+        <div class="detail-panel">
+          <p><strong class="gold">Առավելություններ.</strong> կարող է պահպանել շահութաբերությունը՝ առանց ծառայությունների գները բարձրացնելու, և բարելավել ռեսուրսների օգտագործումը։</p>
+          <p><strong class="gold">Ռիսկեր.</strong> չափազանց մեծ կրճատումները կարող են նվազեցնել ծառայությունների որակը և առաջացնել աշխատակիցների դժգոհություն։</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="num">ԱՅԼԸՆՏՐԱՆՔ 03</div>
+        <h3>Ոչ հիմնական ակտիվների վաճառք և հետվարձակալություն</h3>
+        <p>
+          Վաճառել որոշ անշարժ գույք և շարունակել օգտագործել այն վարձակալության
+          պայմաններով՝ ստացված միջոցներն ուղղելով պարտքերի մարմանը։
+        </p>
+        <button class="detail-toggle" onclick="toggleDetail(this)">＋ Առավելություններ և ռիսկեր</button>
+        <div class="detail-panel">
+          <p><strong class="gold">Առավելություններ.</strong> ապահովում է անմիջական դրամական միջոցներ և կարող է արագացնել պարտքերի մարումը։</p>
+          <p><strong class="gold">Ռիսկեր.</strong> ընկերությունը կորցնում է ակտիվի սեփականության իրավունքը և ստանձնում երկարաժամկետ վարձակալական ծախսեր։</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 COMPARISON -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">10 / Ռազմավարությունների համեմատություն</div>
+    <h2>Ո՞ր տարբերակն է առավել <span class="gold">համապատասխան ընկերությանը</span></h2>
+    <p class="lead">
+      Այլընտրանքների համեմատությունը ցույց է տալիս, որ յուրաքանչյուր ռազմավարություն
+      լուծում է որոշակի խնդիր, սակայն կարող է առաջացնել նաև նոր սահմանափակումներ։
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Ռազմավարություն</th>
+            <th>Հիմնական նպատակը</th>
+            <th>Առավելությունը</th>
+            <th>Հիմնական ռիսկը</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Կոնսոլիդացիա</td>
+            <td>Դադարեցնել ընդլայնումը, ուղղել միջոցները պարտքերի մարմանը։</td>
+            <td>Ֆինանսական ռիսկի և տոկոսային բեռի նվազեցում։</td>
+            <td>ԱՄՆ շուկա մուտք գործելու հնարավորության հետաձգում։</td>
+          </tr>
+          <tr>
+            <td>Ծախսերի օպտիմալացում</td>
+            <td>Նվազեցնել գործառնական ծախսերը և բարձրացնել արդյունավետությունը։</td>
+            <td>Ռեսուրսների ավելի ճիշտ օգտագործում։</td>
+            <td>Ծառայության որակի անկման և աշխատակիցների դժգոհության վտանգ։</td>
+          </tr>
+          <tr>
+            <td>Ակտիվների վաճառք և հետվարձակալություն</td>
+            <td>Ազատել դրամական միջոցներ՝ ակտիվների վաճառքի միջոցով։</td>
+            <td>Արագ դրամական մուտք և պարտքերի մարման հնարավորություն։</td>
+            <td>Սեփականության կորուստ և վարձակալական վճարների առաջացում։</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="detail-toggle" onclick="toggleDetail(this)">＋ Համեմատության մեկնաբանություն</button>
+    <div class="detail-panel">
+      <p>
+        Կոնսոլիդացիոն ռազմավարությունը կենտրոնանում է ֆինանսական կայունության
+        վրա։ Ծախսերի օպտիմալացումը կարող է օգտակար լինել, սակայն պետք է իրականացվի
+        զգուշորեն, որպեսզի չվնասի բարձրակարգ սպասարկմանը։ Ակտիվների վաճառքն ու
+        հետվարձակալությունը կարող են արագ ապահովել դրամական միջոցներ, բայց
+        երկարաժամկետ առումով առաջացնում են նոր պարտավորություններ։ Հետևաբար
+        ընկերության համար առավել հիմնավորված է ժամանակավորապես առաջնահերթություն
+        տալ ֆինանսական կայունությանը։
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 CONCLUSION -->
+<section class="slide" style="--bg:url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=2200&q=90')">
+  <div class="content">
+    <div class="eyebrow">11 / Եզրակացություն և առաջարկություն</div>
+    <h2>Առաջնահերթությունը՝ <span class="gold">կայունություն, հետո՝ ընդլայնում</span></h2>
+    <p class="lead">
+      Coaching Inns plc-ի համար առավել նպատակահարմար է ժամանակավորապես
+      ընտրել կոնսոլիդացիոն՝ պահպանողական ռազմավարությունը՝ միաժամանակ
+      լուծելով աշխատուժի պակասուրդի խնդիրը։
+    </p>
+    <div class="grid">
+      <div class="info-card">
+        <div class="num">ՔԱՅԼ 01</div>
+        <h3>Ժամանակավորապես սառեցնել ԱՄՆ ընդլայնումը</h3>
+        <p>Նոր ներդրումային ծրագրերը հետաձգել այնքան ժամանակ, մինչև ընկերության ֆինանսական վիճակը դառնա ավելի կայուն։</p>
+      </div>
+      <div class="info-card">
+        <div class="num">ՔԱՅԼ 02</div>
+        <h3>Ազատ դրամական հոսքերն ուղղել պարտքերի մարմանը</h3>
+        <p>Նվազեցնել պարտքային բեռը և սահմանափակել տոկոսադրույքների բարձրացման բացասական ազդեցությունը։</p>
+      </div>
+      <div class="info-card">
+        <div class="num">ՔԱՅԼ 03</div>
+        <h3>Ներդնել ներքին վերապատրաստման համակարգ</h3>
+        <p>Ընդլայնել աշխատուժի ներգրավման հնարավորությունները և ձևավորել ընկերության պահանջներին համապատասխան մասնագետներ։</p>
+      </div>
+      <div class="info-card">
+        <div class="num">ՔԱՅԼ 04</div>
+        <h3>Բարելավել աշխատակիցների պայմանները</h3>
+        <p>Աշխատավարձերի, բոնուսների, ճկուն գրաֆիկի և կարիերայի հնարավորությունների միջոցով բարձրացնել գործատուի գրավչությունը։</p>
+      </div>
+    </div>
+    <div class="recommendation">
+      <strong>Վերջնական առաջարկություն</strong>
+      <p>
+        Ընկերությունը պետք է նախ ամրապնդի իր ֆինանսական դիրքը և կարգավորի
+        աշխատուժի խնդիրը։ Միայն այդ երկու ուղղություններով կայուն արդյունքի
+        հասնելուց հետո նպատակահարմար կլինի վերադառնալ միջազգային ընդլայնման
+        ծրագրին։ Այս մոտեցումը թույլ կտա ապագա աճը կառուցել ավելի վերահսկելի
+        և կայուն հիմքի վրա։
+      </p>
+    </div>
+    <div style="margin-top:24px;color:var(--gold);font-size:12px;letter-spacing:.16em">
+      ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ ՈՒՇԱԴՐՈՒԹՅԱՆ ՀԱՄԱՐ
+    </div>
+  </div>
+</section>
+
+</div>
+
+<button class="notes-trigger" id="notesTrigger" onclick="toggleNotes()">▤ Զեկույցի խոսք</button>
+<aside class="notes-box" id="notesBox">
+  <div class="notes-head">
+    <h3 id="notesTitle">Զեկույցի խոսք</h3>
+    <button class="close-notes" onclick="toggleNotes()">×</button>
+  </div>
+  <div class="notes-hint">ԲԱՆԱՎՈՐ ՆԵՐԿԱՅԱՑՄԱՆ ԱՄԲՈՂՋԱԿԱՆ ՏԵՔՍՏ</div>
+  <div id="notesContent"></div>
+</aside>
+
+<div class="page-number" id="pageNumber">01 / 12</div>
+<div class="navigation">
+  <button class="nav-btn" id="prevBtn" onclick="move(-1)">‹</button>
+  <span class="nav-label" id="navLabel">01 — 12</span>
+  <button class="nav-btn" id="nextBtn" onclick="move(1)">›</button>
+</div>
+
+<div id="overview" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(4,10,12,.94);backdrop-filter:blur(16px);padding:90px 7%;overflow:auto">
+  <button class="top-btn" style="position:absolute;right:5%;top:25px" onclick="toggleOverview()">Փակել ×</button>
+  <div class="eyebrow">ՆԵՐԿԱՅԱՑՄԱՆ ԲՈԼՈՐ ԷՋԵՐԸ</div>
+  <h2 style="margin-bottom:25px">Ընտրիր <span class="gold">էջը</span></h2>
+  <div id="overviewGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px"></div>
+</div>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+let current = 0;
+let touchStart = 0;
+
+const report = [
+`Բարև ձեզ։ Այս ներկայացման ընթացքում կանդրադառնամ Coaching Inns plc ընկերության ռազմավարական խնդիրներին և դրանց հնարավոր լուծումներին։ Քննարկման հիմքում հյուրանոցային ընկերության իրավիճակն է, որը գործում է Տրինիդադում և ունի 23 բարձրակարգ՝ 4–5 աստղանի հյուրանոց։
+
+Ընկերությունը տնտեսական աճի պայմաններում ընդլայնվել է՝ ներգրավելով մեծ վարկային միջոցներ։ Սակայն այժմ բախվում է երկու հիմնական մարտահրավերի։ Առաջինը՝ խոհանոցի, հավաքարարների և սպասարկման ոլորտի աշխատակիցների պակասն է։ Երկրորդը՝ ինֆլյացիայի պայմաններում տոկոսադրույքների բարձրացման վտանգը։
+
+Այս երկու խնդիրներն էլ կարող են սահմանափակել ընկերության հետագա զարգացումը։ Աշխատուժի պակասը կարող է նվազեցնել սպասարկման որակը, իսկ տոկոսադրույքների աճը՝ մեծացնել ֆինանսական ծախսերը։ Հետևաբար ընկերության համար կարևոր է գտնել այնպիսի ռազմավարություն, որը կպահպանի գործող բիզնեսի կայունությունը և միաժամանակ հնարավորություն կտա ապագայում շարունակել զարգացումը։`,
+
+`Նախ ներկայացնենք ընկերության ընդհանուր դիրքը։ Coaching Inns plc-ն Տրինիդադում գործող հյուրանոցային ընկերություն է, որն ունի 23 բարձրակարգ հյուրանոց։ Դրանք պատկանում են 4–5 աստղանի դասին, ինչը նշանակում է, որ ընկերության համար հատկապես կարևոր է սպասարկման բարձր և կայուն որակի պահպանումը։
+
+Ընդլայնման նպատակով ընկերությունը ներգրավել է մեծ վարկային միջոցներ և ձեռք բերել անշարժ գույք։ Միաժամանակ դիտարկվում է ԱՄՆ-ում առաջին հյուրանոցը բացելու հնարավորությունը։ Այսինքն՝ ընկերությունը նպատակ ունի ընդլայնել իր գործունեությունը նաև միջազգային շուկայում։
+
+Սակայն ներկայումս այդ ծրագրերը բախվում են երկու խոչընդոտի։ Մի կողմից՝ դժվարացել է անհրաժեշտ աշխատակիցների հավաքագրումը, մյուս կողմից՝ ինֆլյացիայի պատճառով կարող է բարձրանալ փոխառու միջոցների արժեքը։ Հետևաբար ընկերությունը պետք է վերանայի իր առաջնահերթությունները և գնահատի՝ արդյոք ներկայիս պայմաններում նպատակահարմար է շարունակել ընդլայնումը։`,
+
+`Իրավիճակում առանձնանում են երկու հիմնական սպառնալիքներ։
+
+Առաջինը մարդկային ռեսուրսների խնդիրն է։ Ընկերությունը դժվարանում է գտնել հատկապես այն աշխատակիցներին, որոնց աշխատանքը կապված է խոհանոցի, մաքրության և սպասարկման հետ։ Այս հաստիքների համալրումը կարևոր է հյուրանոցների ամենօրյա գործունեության համար։ Եթե աշխատակիցները բավարար չեն, գործող անձնակազմը ստիպված է լինում ավելի մեծ ծանրաբեռնվածությամբ աշխատել, ինչը կարող է անդրադառնալ ծառայության որակի վրա։
+
+Երկրորդ սպառնալիքը տոկոսադրույքների բարձրացման հնարավորությունն է։ Քանի որ ընկերությունն ունի մեծ վարկային պարտավորություններ, տոկոսադրույքների աճը կարող է մեծացնել պարտքի սպասարկման ծախսերը։ Դա կարող է նվազեցնել շահույթը և սահմանափակել նոր ներդրումների ֆինանսավորման հնարավորությունը։
+
+Այսպիսով՝ ընկերությունը միաժամանակ բախվում է գործառնական և ֆինանսական ռիսկերի։ Դրանցից որևէ մեկի անտեսումը կարող է ավելի բարդացնել մյուսի լուծումը։`,
+
+`Առաջին հարցը վերաբերում է այն պատճառներին, որոնց հետևանքով Coaching Inns plc-ի համար դժվարացել է նոր աշխատակիցներ վարձելը։
+
+Առաջին պատճառը երկրում գործազրկության ցածր մակարդակն է։ Տնտեսական աճի պայմաններում աշխատուժի առաջարկը սահմանափակ է։ Աշխատողները կարող են ընտրել մի քանի հնարավոր գործատուների միջև, հետևաբար ընկերությունները ստիպված են ավելի ակտիվ մրցակցել թեկնածուների համար։
+
+Երկրորդ պատճառը աշխատանքային պայմաններն ու վարձատրությունն են։ Խոհանոցային և սպասարկման աշխատանքները հաճախ ֆիզիկապես ծանր են, ունեն երկար և ոչ միշտ ճկուն աշխատանքային ժամեր։ Եթե աշխատավարձը չի համապատասխանում այդ ծանրաբեռնվածությանը, հաստիքները դառնում են ավելի քիչ գրավիչ։
+
+Երրորդ պատճառը ներքին ուսուցման համակարգի բացակայությունն է։ Ընկերությունը սովորաբար փորձում է աշխատանքի ընդունել արդեն պատրաստի և փորձառու աշխատակիցների՝ այլ հյուրանոցներից։ Այս մոտեցումը սահմանափակում է թեկնածուների շրջանակը։
+
+Չորրորդ պատճառը մրցակցությունն է այլ հյուրանոցների հետ։ Աշխատուժի պակասի պայմաններում մրցակիցները կարող են առաջարկել ավելի բարձր աշխատավարձեր և հավելավճարներ։ Այսպիսով՝ հավաքագրման դժվարությունները պայմանավորված են ինչպես արտաքին շուկայով, այնպես էլ ընկերության ներքին քաղաքականությամբ։`,
+
+`Երկրորդ հարցը վերաբերում է աշխատուժի պակասի ազդեցությանը ընկերության հետագա ընդլայնման վրա։
+
+Առաջին հետևանքը սպասարկման որակի անկումն է։ Եթե հյուրանոցներում աշխատակիցները բավարար չեն, գործող անձնակազմի ծանրաբեռնվածությունն աճում է, իսկ սպասարկումը կարող է դանդաղել։ Սա հատկապես վտանգավոր է 4–5 աստղանի հյուրանոցների համար, քանի որ հյուրերի սպասելիքները բարձր են։ Անբավարար սպասարկումը կարող է վնասել ընկերության հեղինակությանը։
+
+Երկրորդ հետևանքը գործառնական հզորությունների թերբեռնվածությունն է։ Ընկերությունը կարող է ունենալ անհրաժեշտ սենյակներ և ռեստորաններ, սակայն առանց բավարար աշխատակիցների չի կարող դրանք լիարժեք օգտագործել։ Արդյունքում նվազում է հնարավոր եկամտաբերությունը։
+
+Երրորդ՝ ընդլայնման ծրագրերը կարող են հետաձգվել։ Եթե ընկերությունը դժվարանում է համալրել նույնիսկ գործող հյուրանոցները, ապա ԱՄՆ-ում նոր հյուրանոցի համար անձնակազմ հավաքագրելը կարող է ավելի բարդ լինել։
+
+Չորրորդ հետևանքը աշխատուժի ծախսերի աճն է։ Աշխատակիցներին ներգրավելու և պահելու համար կարող է անհրաժեշտ լինել բարձրացնել աշխատավարձերը կամ տրամադրել հավելավճարներ։ Սա էլ իր հերթին կարող է նվազեցնել շահույթի մարժան։
+
+Այս ամենը ցույց է տալիս, որ աշխատուժի խնդիրը միայն կադրային հարց չէ․ այն ուղղակիորեն ազդում է ընդլայնման ռազմավարության իրագործելիության վրա։`,
+
+`Աշխատուժի խնդրի հաղթահարման համար կարելի է առաջարկել երկու հիմնական ուղղություն։
+
+Առաջինը սեփական ուսուցման և վերապատրաստման ծրագրերի ներդրումն է։ Ընկերությունը պետք է վերանայի միայն փորձառու աշխատակիցներ վարձելու մոտեցումը և հնարավորություն տա անփորձ, երիտասարդ թեկնածուներին սովորել աշխատանքի ընթացքում։ Այս կերպ կընդլայնվի հնարավոր աշխատակիցների շրջանակը։ Միաժամանակ ընկերությունը կկարողանա ձևավորել այնպիսի մասնագետներ, որոնք կաշխատեն իր չափանիշներին և կորպորատիվ մշակույթին համապատասխան։
+
+Այս ծրագիրը կարող է ներառել հաստիքների համար անհրաժեշտ հմտությունների սահմանում, գործնական ուսուցում, փորձառու աշխատակիցների աջակցություն և աշխատանքի արդյունքների պարբերական գնահատում։
+
+Երկրորդ ուղղությունը աշխատանքային պայմանների և փոխհատուցման փաթեթի բարելավումն է։ Ընկերությունը կարող է բարձրացնել աշխատավարձերը, ներդնել բոնուսներ, առաջարկել ավելի ճկուն աշխատանքային ժամեր, բժշկական ապահովագրություն և կարիերայի աճի հնարավորություններ։
+
+Այս միջոցառումները կարող են բարձրացնել ընկերության գրավչությունը աշխատաշուկայում և նպաստել աշխատակիցների պահպանմանը։ Կարևոր է, որ երկու լուծումները կիրառվեն միասին․ ուսուցումը մեծացնում է թեկնածուների շրջանակը, իսկ լավ աշխատանքային պայմանները օգնում են նրանց ներգրավել և պահել։`,
+
+`Չորրորդ հարցի առաջին մասը վերաբերում է տոկոսադրույքների բարձրացման ֆինանսական ազդեցությանը։
+
+Coaching Inns plc-ն ընդլայնման և անշարժ գույքի ձեռքբերման նպատակով ներգրավել է մեծ փոխառություններ։ Հետևաբար տոկոսադրույքների բարձրացումը կարող է մեծացնել ընկերության տոկոսային ծախսերը։ Եթե պարտքի սպասարկումն ավելի թանկ է դառնում, ընկերությանը անհրաժեշտ է ավելի մեծ գումար հատկացնել վարկային պարտավորությունների կատարմանը։
+
+Դրա հետևանքով կարող է նվազել զուտ շահույթը։ Միաժամանակ ընկերության դրամական հոսքերը կարող են լարվել, քանի որ ավելի մեծ գումարներ են ուղղվելու տոկոսավճարներին, այլ ոչ թե զարգացման կամ ընթացիկ գործունեության ֆինանսավորմանը։
+
+Այս իրավիճակը կարող է առաջացնել նաև իրացվելիության խնդիր։ Իրացվելիությունը կազմակերպության՝ իր ընթացիկ ֆինանսական պարտավորությունները ժամանակին կատարելու կարողությունն է։ Եթե դրամական մուտքերը բավարար չեն պարտավորությունների սպասարկման համար, ընկերությունը կարող է դժվարանալ ժամանակին կատարել վճարումները։
+
+Այսպիսով՝ տոկոսադրույքների բարձրացումը կարող է ոչ միայն նվազեցնել շահույթը, այլև սահմանափակել ընկերության ֆինանսական ճկունությունը։`,
+
+`Տոկոսադրույքների բարձրացման երկրորդ կարևոր ազդեցությունը կապված է շուկայի և սպառողների վարքագծի հետ։
+
+Բարձր տոկոսադրույքները կարող են զսպել տնտեսական ակտիվությունը։ Տնային տնտեսությունների ֆինանսական բեռը կարող է մեծանալ, իսկ տնօրինելի եկամուտը՝ սահմանափակվել։ Այդ պայմաններում մարդիկ կարող են ավելի քիչ գումար ծախսել շքեղության, զբոսաշրջության, հանգստի և ռեստորանային ծառայությունների վրա։
+
+Հյուրանոցային բիզնեսի համար սա կարևոր ռիսկ է, քանի որ պահանջարկի նվազումը կարող է հանգեցնել հյուրանոցների զբաղվածության մակարդակի անկման։ Եթե ավելի քիչ սենյակներ են զբաղեցվում, ընկերության եկամուտները կարող են նվազել, մինչդեռ բազմաթիվ գործառնական ծախսեր շարունակվում են։
+
+Բացի դրանից, բարձր տոկոսադրույքները կարող են թանկացնել նոր ներդրումների ֆինանսավորումը։ ԱՄՆ-ում հյուրանոց բացելու կամ նոր անշարժ գույք ձեռք բերելու համար անհրաժեշտ կապիտալ ծախսերը կարող են ավելի դժվար ֆինանսավորվել։ Հետևաբար ընկերությունը կարող է ստիպված լինել հետաձգել կամ վերանայել ընդլայնման ծրագիրը։
+
+Այսպիսով՝ տոկոսադրույքների բարձրացումը կարող է միաժամանակ ազդել ընկերության ֆինանսական ծախսերի, հաճախորդների պահանջարկի և ապագա ներդրումների վրա։`,
+
+`Տոկոսադրույքների բարձրացման ազդեցությունը կարելի է դիտարկել երկու ժամանակային հորիզոնով։
+
+Կարճաժամկետ հատվածում ընկերությունը կարող է բախվել զուտ շահույթի անմիջական նվազման, դրամական հոսքերի լարվածության և ԱՄՆ-ում ընդլայնման ծրագրերի սառեցման։ Այս փուլում կարևոր է պահպանել ֆինանսական կարգապահությունը և գնահատել, թե արդյոք ընկերությունն ունի բավարար միջոցներ իր պարտավորությունները կատարելու համար։
+
+Երկարաժամկետ հեռանկարը կարող է ավելի դրական լինել, եթե ընկերությունը կարողանա աստիճանաբար մարել պարտքերը և վերականգնել ֆինանսական կայունությունը։ Տնտեսական ակտիվության վերականգնումից հետո հնարավոր կլինի նաև ամրապնդել շուկայական դիրքերը։
+
+Սակայն այդ արդյունքը ինքնաբերաբար չի ապահովվում։ Այն կախված է ընկերության որոշումներից, ծախսերի վերահսկումից, պարտքի կառավարման արդյունավետությունից և շուկայական պայմաններից։
+
+Հետևաբար կարճաժամկետ դժվարությունները հաղթահարելու համար ընկերությունը պետք է առաջնահերթություն տա կայունությանը, իսկ երկարաժամկետ աճի ծրագրերին վերադառնա ավելի բարենպաստ պայմաններում։`,
+
+`Հինգերորդ հարցը վերաբերում է բարձր տոկոսադրույքներին արձագանքելու ռազմավարական այլընտրանքներին։
+
+Առաջին տարբերակը կոնսոլիդացիոն կամ պահպանողական ռազմավարությունն է։ Դրա էությունն այն է, որ ընկերությունը ժամանակավորապես դադարեցնում է ընդլայնումը և ռեսուրսներն ուղղում պարտքերի մարմանն ու ֆինանսական կայունության ամրապնդմանը։ Այս մոտեցումը նվազեցնում է ֆինանսական ռիսկը, սակայն կարող է հետաձգել ԱՄՆ շուկա մուտք գործելը։
+
+Երկրորդ տարբերակը ծախսերի կրճատումն ու օպտիմալացումն է։ Ընկերությունը կարող է վերանայել գործառնական ծախսերը և բարձրացնել ներքին ռեսուրսների օգտագործման արդյունավետությունը։ Առավելությունն այն է, որ հնարավոր է պահպանել շահութաբերությունը՝ առանց գները բարձրացնելու։ Սակայն չափազանց մեծ կրճատումները կարող են վնասել սպասարկման որակին և առաջացնել աշխատակիցների դժգոհություն։
+
+Երրորդ տարբերակը ոչ հիմնական ակտիվների վաճառքն ու հետվարձակալությունն է։ Ընկերությունը կարող է վաճառել որոշ անշարժ գույք և շարունակել օգտագործել այն վարձակալության պայմաններով։ Սա կարող է ապահովել անմիջական դրամական մուտք և օգնել պարտքերի մարմանը։ Բայց դրա դիմաց ընկերությունը կորցնում է ակտիվի սեփականության իրավունքը և ստանձնում երկարաժամկետ վարձակալական ծախսեր։
+
+Այս երեք տարբերակներից յուրաքանչյուրն ունի իր նպատակն ու սահմանափակումները։ Ընտրությունը պետք է կատարվի՝ հաշվի առնելով ընկերության ֆինանսական վիճակը և երկարաժամկետ շահերը։`,
+
+`Ռազմավարությունների համեմատությունից երևում է, որ կոնսոլիդացիոն ռազմավարությունը առավել անմիջականորեն է արձագանքում ընկերության հիմնական ֆինանսական խնդրին՝ պարտքի և տոկոսային ծախսերի բեռին։
+
+Ծախսերի օպտիմալացումը նույնպես կարող է օգտակար լինել, սակայն անհրաժեշտ է զգուշություն։ Coaching Inns plc-ն գործում է բարձրակարգ հյուրանոցային հատվածում, ուստի ծախսերի կրճատումը չպետք է հանգեցնի սպասարկման որակի նվազման։ Հակառակ դեպքում ընկերությունը կարող է վնասել իր մրցակցային դիրքը։
+
+Ակտիվների վաճառքն ու հետվարձակալությունը կարող են արագ ապահովել դրամական միջոցներ, բայց այդ քայլը կարող է երկարաժամկետ պարտավորություններ ստեղծել և նվազեցնել ընկերության սեփական ակտիվների ծավալը։
+
+Հետևաբար համեմատության արդյունքում առավել նպատակահարմար է դիտարկել կոնսոլիդացիոն մոտեցումը որպես հիմնական ռազմավարություն։ Այն հնարավորություն է տալիս առաջնահերթություն տալ ֆինանսական կայունությանը՝ առանց ընկերության ապագա զարգացման հնարավորությունը ամբողջությամբ հրաժարվելու։`,
+
+`Ամփոփելով՝ Coaching Inns plc-ի համար առավել նպատակահարմար է կոնսոլիդացիոն՝ պահպանողական ռազմավարությունը։
+
+Առաջին հերթին ընկերությունը պետք է ժամանակավորապես սառեցնի ԱՄՆ-ում ընդլայնման ծրագիրը։ Սա չի նշանակում ընդլայնման գաղափարից հրաժարվել, այլ նշանակում է հետաձգել այն մինչև ավելի կայուն ֆինանսական պայմանների ձևավորումը։
+
+Երկրորդ՝ ազատ դրամական հոսքերը պետք է ուղղվեն բարձր տոկոսադրույքով պարտքերի մարմանը։ Դա կարող է նվազեցնել ընկերության ֆինանսական բեռը և մեծացնել ապագա որոշումների համար անհրաժեշտ ճկունությունը։
+
+Երրորդ՝ անհրաժեշտ է ներդնել ներքին վերապատրաստման ծրագրեր և բարելավել աշխատակիցների աշխատանքային պայմանները։ Այս քայլերը կօգնեն հաղթահարել աշխատուժի պակասը և պահպանել բարձրակարգ սպասարկման չափանիշները։
+
+Իմ եզրակացությունն այն է, որ ընկերությունը նախ պետք է ամրապնդի իր ֆինանսական դիրքը և լուծի մարդկային ռեսուրսների խնդիրը։ Միայն դրանից հետո կարելի է վերադառնալ միջազգային ընդլայնման ծրագրին։ Այս մոտեցումը թույլ կտա ապագա աճը կառուցել ավելի կայուն և վերահսկելի հիմքի վրա։
+
+Շնորհակալություն ուշադրության համար։`
+];
+
+function showSlide(index){
+  current = Math.max(0,Math.min(slides.length-1,index));
+  slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+  const n=String(current+1).padStart(2,'0');
+  document.getElementById('pageNumber').textContent=n+' / '+String(slides.length).padStart(2,'0');
+  document.getElementById('navLabel').textContent=n+' — '+String(slides.length).padStart(2,'0');
+  document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%';
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').disabled=current===slides.length-1;
+  document.getElementById('notesBox').classList.remove('open');
+  document.getElementById('notesTitle').textContent='Զեկույցի խոսք · Էջ '+n;
+  document.getElementById('notesContent').innerHTML='<p>'+report[current].replace(/\n\n/g,'</p><p>').replace(/\n/g,' ')+'</p>';
+  document.getElementById('notesTrigger').textContent='▤ Զեկույցի խոսք';
+}
+function move(step){showSlide(current+step)}
+function toggleDetail(btn){
+  const panel=btn.nextElementSibling;
+  const open=panel.classList.toggle('open');
+  btn.innerHTML=open?'− Փակել մանրամասները':'＋ Բացել մանրամասները';
+}
+function toggleNotes(){
+  const box=document.getElementById('notesBox');
+  box.classList.toggle('open');
+  document.getElementById('notesTrigger').textContent=box.classList.contains('open')?'× Փակել խոսքը':'▤ Զեկույցի խոսք';
+}
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  const light=document.body.classList.contains('light');
+  document.getElementById('themeBtn').textContent=light?'◐ Մութ':'☼ Լույս';
+}
+function toggleFullscreen(){
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+function toggleOverview(){
+  const panel=document.getElementById('overview');
+  const isOpen=panel.style.display!=='none';
+  panel.style.display=isOpen?'none':'block';
+  if(!isOpen){
+    document.getElementById('overviewGrid').innerHTML=slides.map((s,i)=>{
+      const title=s.querySelector('h1,h2')?.innerText||'Էջ '+(i+1);
+      return `<button onclick="showSlide(${i});toggleOverview()" style="text-align:left;padding:18px;border:1px solid rgba(255,255,255,.2);border-radius:13px;background:rgba(255,255,255,.06);color:#f5f2ec">
+        <div style="font-size:10px;color:#d7b477;margin-bottom:9px">ԷՋ ${String(i+1).padStart(2,'0')}</div>
+        <div style="font-size:13px;font-weight:700">${title}</div>
+      </button>`;
+    }).join('');
+  }
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown')move(1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp')move(-1);
+  if(e.key==='Escape'){
+    document.getElementById('overview').style.display='none';
+    document.getElementById('notesBox').classList.remove('open');
+  }
+});
+document.addEventListener('touchstart',e=>{touchStart=e.changedTouches[0].screenX},{passive:true});
+document.addEventListener('touchend',e=>{
+  const delta=e.changedTouches[0].screenX-touchStart;
+  if(Math.abs(delta)>70)move(delta<0?1:-1);
+},{passive:true});
+showSlide(0);
+</script>
+</body>
+</html>
